@@ -28,7 +28,7 @@ twitter_username: fotov
 github_username:  fotov
 
 # Build settings
-theme: jekyll-theme-midnight
+theme: jekyll-theme-minimal
 plugins:
   - jekyll-feed
 
