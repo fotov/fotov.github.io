@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Включение отладки по http на linux сервере"
-date:   2019-09-27 19:00:00 +0300
+date:   2019-08-27 19:00:00 +0300
 categories: linux debug
 ---
 
