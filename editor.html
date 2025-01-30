@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Editor</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.37.2/ace.min.js" integrity="sha512-/I2/7cdTsc+HjEVSFCUP7yAlvJul6VliTstA8MKTM4BXoXYeJZeYVaTNH9rUQK8puLqJq4fGM+3tRzYyPA/Vpg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.37.2/ext-language_tools.min.js" integrity="sha512-WPFoecnG6+TbAah6uWLOr+/36IDeXpa9klWh+SFWRzQeVC6x/n7rzODbzctFYL7rqxaDK2pbKj3psH7sws70Ng==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.37.2/ext-statusbar.min.js" integrity="sha512-T5mKOKi5K3WwVXwx/gT0iJdd+Z/8tOMYwEQBJKs4ieRdQQVMM8ZJJqYQpXRlzRXTlEwylTsw1noPiPGwCHZutQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
   <style type="text/css" media="screen">
     body {
         overflow: hidden;
@@ -17,6 +25,13 @@
         left: 0;
         right: 0;
     }
+
+	#statusBar {
+		background-color: #2d2d2d;
+		color: #ffffff;
+		padding: 5px;
+		font-family: monospace;
+	}
   </style>
 </head>
 <body>
@@ -24,16 +39,26 @@
 <pre id="editor">
 // Введите код
 </pre>
+<div id="statusBar"></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.37.2/ace.min.js" integrity="sha512-/I2/7cdTsc+HjEVSFCUP7yAlvJul6VliTstA8MKTM4BXoXYeJZeYVaTNH9rUQK8puLqJq4fGM+3tRzYyPA/Vpg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script>
+<script>
     
-    ace.config.setModuleUrl('ace/mode/_1c', 'https://y1c.ru//mode-_1c.js');
-    ace.config.setModuleUrl('ace/mode/bsl_query', 'https://y1c.ru//mode-bsl_query.js');
-    ace.config.setModuleUrl('ace/theme/ones', 'https://y1c.ru/theme-ones.js')
+  ace.config.setModuleUrl('ace/mode/_1c', 'https://y1c.ru//mode-_1c.js');
+  ace.config.setModuleUrl('ace/mode/bsl_query', 'https://y1c.ru//mode-bsl_query.js');
+  ace.config.setModuleUrl('ace/theme/ones', 'https://y1c.ru/theme-ones.js')
     
-    var editor = ace.edit('editor')
-    editor.session.setMode('ace/mode/_1c')
-    editor.setTheme('ace/theme/ones')
+  var editor = ace.edit('editor')
+  editor.session.setMode('ace/mode/_1c')
+  editor.setTheme('ace/theme/ones')
+	editor.setOptions({
+    	enableBasicAutocompletion: true,
+    	enableLiveAutocompletion: true,
+    	enableSnippets: true
+	});
+
+	// Включение строки состояния
+	var StatusBar = ace.require("ace/ext/statusbar");
+	var statusBar = new StatusBar(editor, document.getElementById("statusBar"));
 
 </script>
 
